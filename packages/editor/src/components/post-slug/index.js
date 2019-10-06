@@ -13,26 +13,34 @@ import { safeDecodeURIComponent } from '@wordpress/url';
 import PostSlugCheck from './check';
 import { cleanForSlug } from '../../utils/url';
 
-class PostSlug extends Component {
-	constructor() {
+export class PostSlug extends Component {
+	constructor( { postSlug, postTitle, postID } ) {
 		super( ...arguments );
+
+		this.state = {
+			editedSlug: safeDecodeURIComponent( postSlug ) || cleanForSlug( postTitle ) || postID,
+		};
 
 		this.setSlug = this.setSlug.bind( this );
 	}
 
-	setSlug( event, clean ) {
-		const { onUpdateSlug } = this.props;
+	setSlug( event ) {
+		const { postSlug, onUpdateSlug } = this.props;
 		const { value } = event.target;
 
-		const editedSlug = clean ? cleanForSlug( value ) : value;
+		const editedSlug = cleanForSlug( value );
+
+		if ( editedSlug === postSlug ) {
+			return;
+		}
 
 		onUpdateSlug( editedSlug );
 	}
 
 	render() {
-		const { postSlug, postTitle, postID, instanceId } = this.props;
+		const { instanceId } = this.props;
+		const { editedSlug } = this.state;
 
-		const slug = safeDecodeURIComponent( postSlug ) || cleanForSlug( postTitle ) || postID;
 		const inputId = 'post-slug-input-' + instanceId;
 
 		return (
@@ -41,9 +49,9 @@ class PostSlug extends Component {
 				<input
 					type="text"
 					id={ inputId }
-					value={ slug }
-					onChange={ ( event ) => this.setSlug( event, false ) }
-					onBlur={ ( event ) => this.setSlug( event, true ) }
+					value={ editedSlug }
+					onChange={ ( event ) => this.setState( { editedSlug: event.target.value } ) }
+					onBlur={ this.setSlug }
 					className="editor-post-slug__input"
 				/>
 			</PostSlugCheck>
