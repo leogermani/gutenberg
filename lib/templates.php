@@ -52,6 +52,7 @@ function gutenberg_register_template_post_type() {
 		'map_meta_cap'      => true,
 		'supports'          => array(
 			'title',
+			'slug',
 			'editor',
 			'revisions',
 		),
