@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 import {
@@ -64,8 +69,9 @@ function NavigationMenu( {
 		setTextColor,
 	};
 
-	const colorsSelectorStyles = {
+	const navigationMenuStyles = {
 		'--color-menu-link': textColor.color,
+		'--background-color-menu-link': backgroundColor.color,
 	};
 
 	return (
@@ -91,7 +97,7 @@ function NavigationMenu( {
   					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className="wp-block-navigation-menu" style={ colorsSelectorStyles}>
+			<div className="wp-block-navigation-menu" style={ navigationMenuStyles }>
 				{ isRequesting &&
 					<Spinner />
 				}
