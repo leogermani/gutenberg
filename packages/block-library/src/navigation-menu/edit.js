@@ -110,7 +110,8 @@ function NavigationMenu( {
   					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className="wp-block-navigation-menu" style={ navigationMenuStyles }>
+
+			<div className={ navigationMenuClasses } style={ navigationMenuStyles}>
 				{ isRequesting &&
 					<Spinner />
 				}
