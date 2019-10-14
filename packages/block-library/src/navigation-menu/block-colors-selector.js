@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { IconButton, Dropdown, Toolbar } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { DOWN } from '@wordpress/keycodes';
-import { ColorPaletteControl } from '@wordpress/block-editor';
+import { ColorPaletteControl, ContrastChecker } from '@wordpress/block-editor';
 
 /**
  * Color Selector Icon component.
@@ -73,6 +73,14 @@ const renderContent = ( { backgroundColor, textColor, setBackgroundColor, setTex
 					label={ __( 'Text Color' ) }
 				/>
 			</div>
+
+			<ContrastChecker
+				{ ...{
+					textColor: textColor.color,
+					backgroundColor: backgroundColor.color,
+				} }
+				isLargeText={ false }
+			/>
 		</>
 	)
 } );
