@@ -89,7 +89,7 @@ export default ( { style, className, ...colorControlProps } ) =>
 	<Dropdown
 		position="bottom right"
 		className={ classnames( 'block-editor-block-colors-selector', className ) }
-		contentClassName="editor-block-colors-selector__popover block-editor-block-colors-selector__popover"
+		contentClassName="block-editor-block-colors-selector__popover"
 		renderToggle={ renderToggle( style ) }
 		renderContent={ renderContent( colorControlProps ) }
 	/>;
