@@ -88,11 +88,7 @@ const renderContent = ( { backgroundColor, textColor, setBackgroundColor, setTex
 export default ( { style, className, ...colorControlProps } ) =>
 	<Dropdown
 		position="bottom right"
-		className={ classnames(
-			'editor-block-colors-selector,',
-			'block-editor-block-colors-selector',
-			className,
-		) }
+		className={ classnames( 'block-editor-block-colors-selector', className ) }
 		contentClassName="editor-block-colors-selector__popover block-editor-block-colors-selector__popover"
 		renderToggle={ renderToggle( style ) }
 		renderContent={ renderContent( colorControlProps ) }
