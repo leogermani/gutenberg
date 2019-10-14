@@ -25,6 +25,14 @@
 
 		"customTextColor": {
 			"type": "string"
+		},
+
+		"backgroundColorCSSClass": {
+			"type": "string"
+		},
+
+		"textColorCSSClass": {
+			"type": "string"
 		}
 	}
 }

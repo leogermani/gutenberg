@@ -82,6 +82,15 @@ function NavigationMenu( {
 		}
 	);
 
+	// Store colors CSS classes if they exist.
+	if ( backgroundColor.class ) {
+		setAttributes( { backgroundColorCSSClass: backgroundColor.class } );
+	}
+
+	if ( textColor.class ) {
+		setAttributes( { textColorCSSClass: textColor.class } );
+	}
+
 	return (
 		<Fragment>
 			<BlockControls>
