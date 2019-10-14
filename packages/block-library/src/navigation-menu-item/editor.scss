@@ -29,8 +29,15 @@ $menu-label-field-width: 140px;
 }
 
 .wp-block-navigation-menu-item {
-	background-color: var(--background-color-menu-link);
-	color: var(--color-menu-link);
+	&:not(.is-editing) {
+		background-color: var(--background-color-menu-link);
+		color: var(--color-menu-link);
+	}
+
+	&.is-editing .editor-plain-text {
+		background-color: var(--background-color-menu-link);
+		color: var(--color-menu-link);
+	}
 
 	font-family: $editor-font;
 	font-weight: bold;
