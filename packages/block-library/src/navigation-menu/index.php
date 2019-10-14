@@ -15,7 +15,40 @@
  * @return string Returns the post content with the legacy widget added.
  */
 function render_block_navigation_menu( $attributes, $content, $block ) {
-	return '<nav class="wp-block-navigation-menu">' . build_navigation_menu_html( $block ) . '</nav>';
+	// Add CSS classes and inline styles.
+	$cssClasses = [ 'wp-block-navigation-menu' ];
+	$inlineStyles = [];
+
+	if ( array_key_exists('backgroundColor', $attributes ) ) {
+		$cssClasses[] = 'has-background-color';
+		$inlineStyles[] = "background-color: ${attributes['backgroundColor']};";
+	}
+
+	if ( array_key_exists('textColor', $attributes ) ) {
+		$cssClasses[] = 'has-text-color';
+		$inlineStyles[] = "color: ${attributes['textColor']};";
+	}
+
+	if ( array_key_exists('backgroundColorCSSClass', $attributes ) ) {
+		$cssClasses[] = $attributes['backgroundColorCSSClass'];
+	}
+
+	if ( array_key_exists('textColorCSSClass', $attributes ) ) {
+		$cssClasses[] = $attributes['textColorCSSClass'];
+	}
+
+	if ( array_key_exists('customBackgroundColor', $attributes ) ) {
+		$inlineStyles[] = "background-color: ${attributes['customBackgroundColor']};";
+	}
+
+	if ( array_key_exists('customTextColor', $attributes ) ) {
+		$inlineStyles[] = "color: ${attributes['customTextColor']};";
+	}
+
+	$cssClasses = implode( ' ', $cssClasses );
+	$inlineStyles = implode( ' ', $inlineStyles );
+
+	return '<nav class="' . $cssClasses . '" style="' . $inlineStyles . '">' . build_navigation_menu_html( $block ) . '</nav>';
 }
 
 /**
@@ -28,7 +61,7 @@ function render_block_navigation_menu( $attributes, $content, $block ) {
 function build_navigation_menu_html( $block ) {
 	$html = '';
 	foreach ( (array) $block['innerBlocks'] as $key => $menu_item ) {
-		$html .= '<li class="wp-block-navigation-menu-item"><a class="wp-block-navigation-menu-item"';
+		$html .= '<li class="wp-block-navigation-menu-item"><a class="wp-block-navigation-menu-link"';
 		if ( isset( $menu_item['attrs']['destination'] ) ) {
 			$html .= ' href="' . $menu_item['attrs']['destination'] . '"';
 		}
