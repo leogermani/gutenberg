@@ -29,4 +29,8 @@ export default function MyButton() {
 
 Many components also include styles which will need to be output in order to appear correctly. Within WordPress, you can [add the `wp-components` stylesheet as a dependency of your plugin's stylesheet](https://developer.wordpress.org/reference/functions/wp_enqueue_style/#parameters). In other projects, you can link to the `build-style/style.css` file directly.
 
+## API
+
+Visit [Component Reference](https://developer.wordpress.org/block-editor/components/) for a list of all available Components and their documentation.
+
 <br/><br/><p align="center"><img src="https://s.w.org/style/images/codeispoetry.png?1" alt="Code is Poetry." /></p>
